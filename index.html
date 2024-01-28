@@ -4,6 +4,10 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+        <!--==================== MAP ====================-->
+        <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
+        <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+
         <!--==================== UNICONS ====================-->
         <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
         
@@ -12,10 +16,11 @@
         
         <!--==================== CSS ====================-->
         <link rel="stylesheet" href="./package/css/styles.css">
-
+        
         <title>Helmut Pacheco</title>
     </head>
     <body>
+        
         <!--==================== HEADER ====================-->
         <header class="header" id="header">
             <nav class="nav container">
@@ -327,13 +332,13 @@
               <!--==================== QUALIFICATION ====================-->
         <section class="qualification__section">
             <h2 class="section__title">Educación</h2>
-            <span class="section__subtitle">Mi viaje educativo </span>
+            <span class="section__subtitle">Mi viaje personal </span>
 
             <div class="qualification__container container">
                 <div class="qualification__tabs">
                     <div class="qualification__button button--flex qualification__active" data-target='#education'>
                         <i class="uil uil-graduation-cap qualification__icon"></i>
-                        Educación
+                        Educativo
                     </div>
 
                     <div class="qualification__button button--flex" data-target="#work">
@@ -406,11 +411,11 @@
                 </div>
 
                 <div>
-                    <h3 class="qualification__title">Certificación en Data y Analítica</h3>
-                    <span class="qualification__subtitle">Google | Coursera - Online</span>
+                    <h3 class="qualification__title">Especialización en Desarrollo Back-end</h3>
+                    <span class="qualification__subtitle">Idat | Pacha-Qtec - Online</span>
                     <div class="qualification__calendar">
                        <i class="uil uil-calendar-alt"></i>
-                       2021
+                       2024
                     </div>
                 </div>
 
@@ -821,8 +826,29 @@
 
                         <div>
                             <h3 class="contact__title">Ubicación</h3>
-                            <span class="contatc__subtitle">Av. Los Cipreses 854, Santiago de Surco</span>
+                                                        
+                            <div id="map" style="width: 300px; height: 300px;"></div>
+                            
+                            <script>
+
+                                // Ubicación de Perú, Lima, Santiago de Surco
+                                const map = L.map('map').setView([-12.1233696,-76.9951359], 16);
+                            
+                                const tiles = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                                    maxZoom: 19,
+                                    attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+                                }).addTo(map);
+                            
+                                const marker = L.marker([-12.1233696,-76.9951359]).addTo(map)
+                                    .bindPopup('<b>Jirón Sevilla 248</b><br />Santiago de Surco.').openPopup();
+                            
+                                
+                                map.on('click', onMapClick);
+                            
+                            </script>
+
                         </div>
+                        
                     </div>
                 </div>
 
@@ -910,6 +936,7 @@
 
     <!--==================== MAIN JS ====================-->
     <script src="./package/js/main.js"></script>
+
 </body>
 
 </html>
